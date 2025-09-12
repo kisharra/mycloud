@@ -25,7 +25,7 @@ apt install -y bash sudo
 
 ### 2. Клонируйте репозиторий
 ```bash
-git clone https://github.com/<your-repo>/mycloud.git
+git clone https://github.com/kisharra/mycloud.git
 cd mycloud
 ```
 
