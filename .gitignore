@@ -1,0 +1,56 @@
+# === Python (server) ===
+server/venv/
+server/__pycache__/
+server/**/*.py[cod]
+server/.Python
+server/*.sqlite3
+server/db.sqlite3
+server/staticfiles/
+server/media/
+server/.pytest_cache/
+server/.mypy_cache/
+*.egg-info/
+*.egg
+
+# === Filestorage (user uploads) ===
+filestorage/
+
+# === Node.js (frontend - Vite) ===
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.pnp
+frontend/.pnp.js
+
+# testing
+frontend/coverage/
+
+# production build
+frontend/build/
+
+# === Logs ===
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# === Env files ===
+.env
+.env.*
+*.local
+
+# === Misc ===
+.DS_Store
+Thumbs.db
+
+# === IDE ===
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
