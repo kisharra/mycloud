@@ -45,7 +45,7 @@ chmod +x deploy.sh
 ## Git и базовые утилиты
 
 ### 2. Настройка базы данных PostgreSQL
-Создаётся пользователь mycloud с паролем kisharra (можно поменять в скрипте).
+Создаётся пользователь mycloud с паролем kisharra (можно поменять в скрипте и в backend/backend директории файле settings.py).
 Создаётся база данных mycloud, владелец — mycloud.
 
 ### 3. Настройка Python/Django

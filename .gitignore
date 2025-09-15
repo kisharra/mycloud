@@ -1,14 +1,14 @@
-# === Python (server) ===
-server/venv/
-server/__pycache__/
-server/**/*.py[cod]
-server/.Python
-server/*.sqlite3
-server/db.sqlite3
-server/staticfiles/
-server/media/
-server/.pytest_cache/
-server/.mypy_cache/
+# === Python (backend) ===
+backend/venv/
+backend/__pycache__/
+backend/**/*.py[cod]
+backend/.Python
+backend/*.sqlite3
+backend/db.sqlite3
+backend/staticfiles/
+backend/media/
+backend/.pytest_cache/
+backend/.mypy_cache/
 *.egg-info/
 *.egg
 

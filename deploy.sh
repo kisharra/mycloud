@@ -66,8 +66,8 @@ After=network.target
 
 [Service]
 User=$USER
-WorkingDirectory=$PROJECT_DIR/server
-ExecStart=$PROJECT_DIR/server/venv/bin/python manage.py runserver 0.0.0.0:8000
+WorkingDirectory=$PROJECT_DIR/backend
+ExecStart=$PROJECT_DIR/backend/venv/bin/python manage.py runserver 0.0.0.0:8000
 Restart=always
 
 [Install]
