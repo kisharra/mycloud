@@ -5,7 +5,7 @@ import { fetchFiles, upload } from '../features/filesSlice'
 import FileRow from '../components/FileRow'
 import { useLocation } from 'react-router-dom'
 
-export default function Files() {
+export default function Files({ addToast }) {  // 🔹 принимаем addToast
   const { items, loading } = useSelector(s => s.files)
   const [file, setFile] = useState(null)
   const [comment, setComment] = useState('')
@@ -33,6 +33,7 @@ export default function Files() {
             e.preventDefault()
             if (!file) return
             await dispatch(upload({ file, comment }))
+            addToast('✅ Файл успешно загружен')
             setFile(null)
             setComment('')
           }}
@@ -63,7 +64,7 @@ export default function Files() {
           </thead>
           <tbody>
             {items.map(f => (
-              <FileRow key={f.id} f={f} />
+              <FileRow key={f.id} f={f} addToast={addToast} />
             ))}
           </tbody>
         </table>

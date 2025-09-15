@@ -1,7 +1,7 @@
 from django.views.decorators.http import require_POST
 from django.http import JsonResponse
 from django.contrib.auth import logout
-from .serializers import do_register, do_login
+from .helpers import do_register, do_login
 from django.middleware.csrf import get_token
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import ensure_csrf_cookie

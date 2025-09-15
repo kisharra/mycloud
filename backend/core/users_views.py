@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 from django.shortcuts import get_object_or_404
 from .models import User
 from .perms import require_auth, require_admin
-from .serializers import users_list_with_stats, user_to_json
+from .helpers import users_list_with_stats, user_to_json
 from .storage import absolute_path
 
 @require_http_methods(["GET"])

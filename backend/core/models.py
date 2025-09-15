@@ -4,19 +4,18 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 class User(AbstractUser):
     full_name = models.CharField(max_length=255)
     storage_rel_path = models.CharField(max_length=255, default='')  # относительный путь
 
-    def save(self, *args, **kwargs):
-        creating = self.pk is None
-        super().save(*args, **kwargs)
-        if creating and not self.storage_rel_path:
-            self.storage_rel_path = str(self.id)
-            super().save(update_fields=['storage_rel_path'])
 
 class StoredFile(models.Model):
-    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='files')
+    owner = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='files'
+    )
     original_name = models.CharField(max_length=255)
     stored_name = models.CharField(max_length=64, unique=True)  # UUID
     mime_type = models.CharField(max_length=100)

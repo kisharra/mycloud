@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from typing import Any, Dict
+import json
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
@@ -27,7 +28,6 @@ def user_to_json(u: User, with_admin=False):
         d['storage_rel_path'] = u.storage_rel_path
     return d
 
-
 def file_to_json(f: StoredFile):
     return {
         'id': f.id,
@@ -40,7 +40,6 @@ def file_to_json(f: StoredFile):
         'last_downloaded_at': f.last_downloaded_at.isoformat() if f.last_downloaded_at else None,
         'public': bool(f.public_token),
     }
-
 
 def validate_registration(payload: Dict[str, Any]):
     username = (payload.get('username') or '').strip()
@@ -58,9 +57,7 @@ def validate_registration(payload: Dict[str, Any]):
         raise ValidationError('Email уже используется')
     return username, full_name, email, password
 
-
 def do_register(request):
-    import json
     try:
         payload = json.loads(request.body.decode('utf-8'))
         username, full_name, email, password = validate_registration(payload)
@@ -77,9 +74,7 @@ def do_register(request):
     except Exception:
         return JsonResponse({'detail': 'Ошибка регистрации'}, status=400)
 
-
 def do_login(request):
-    import json
     data = json.loads(request.body.decode('utf-8'))
     username = (data.get('username') or '').strip()
     password = data.get('password') or ''
@@ -88,7 +83,6 @@ def do_login(request):
         return JsonResponse({'detail': 'Неверные логин или пароль'}, status=400)
     login(request, user)
     return JsonOk({'user': user_to_json(user)}).to_response()
-
 
 def users_list_with_stats():
     qs = User.objects.all()

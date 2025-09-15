@@ -42,7 +42,7 @@ export default function App() {
         <Route path="/" element={<Home addToast={addToast} />} />
         <Route path="/login" element={<Login addToast={addToast} />} />
         <Route path="/register" element={<Register addToast={addToast} />} />
-        <Route path="/files" element={auth.user ? <Files /> : <Navigate to="/login" />} />
+        <Route path="/files" element={auth.user ? <Files addToast={addToast} /> : <Navigate to="/login" />}/>
         <Route path="/admin" element={auth.user?.is_admin ? <Admin /> : <Navigate to="/" />} />
       </Routes>
 

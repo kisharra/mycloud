@@ -2,23 +2,22 @@ import React, { useState } from 'react'
 import { useAppDispatch } from '../hooks'
 import { removeFile, updateFile, publish } from '../features/filesSlice'
 
-
-export default function FileRow({ f }) {
+export default function FileRow({ f, addToast }) {
   const [edit, setEdit] = useState(false)
   const [name, setName] = useState(f.original_name)
   const [comment, setComment] = useState(f.comment || '')
   const dispatch = useAppDispatch()
 
   const handleDownload = async () => {
-  const res = await fetch(`/api/files/${f.id}/download`, { credentials: 'include' })
-  const blob = await res.blob()
-  const url = window.URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = f.original_name
-  a.click()
-  window.URL.revokeObjectURL(url)
-}
+    const res = await fetch(`/api/files/${f.id}/download`, { credentials: 'include' })
+    const blob = await res.blob()
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = f.original_name
+    a.click()
+    window.URL.revokeObjectURL(url)
+  }
 
   return (
     <tr>
@@ -39,9 +38,8 @@ export default function FileRow({ f }) {
 
               if (navigator.clipboard && navigator.clipboard.writeText) {
                 await navigator.clipboard.writeText(link)
-                alert('Публичная ссылка скопирована')
+                addToast('✅ Публичная ссылка скопирована!')
               } else {
-                // fallback
                 prompt('Скопируйте ссылку:', link)
               }
             }}>
