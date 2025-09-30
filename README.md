@@ -41,8 +41,7 @@ chmod +x deploy.sh
 - Python 3 + pip + venv
 - PostgreSQL
 - npm (Node.js)
-
-## Git и базовые утилиты
+- Git и базовые утилиты
 
 ### 2. Настройка базы данных PostgreSQL
 Создаётся пользователь mycloud с паролем kisharra (можно поменять в скрипте и в backend/backend директории файле settings.py).
